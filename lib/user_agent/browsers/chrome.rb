@@ -8,8 +8,12 @@ class UserAgent
         }
       end
 
+      ChromeBrowsers = %w(
+        Iron
+      ).freeze
+
       def browser
-        'Chrome'
+        ChromeBrowsers.detect { |browser| respond_to?(browser) } || 'Chrome'
       end
 
       def build
